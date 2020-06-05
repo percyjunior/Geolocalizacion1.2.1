@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="60ec1b6d-a465-4e44-b96d-b682e9a7ff8e" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1W28uelJvWOCsYkA8FIlZCx9Kdj" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\9no Semestre\Trabajo de Grado\Aplicacion\Geolocalizacion\client\app\layout\Ususario" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+    <option name="showServicesTree" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="60ec1b6d-a465-4e44-b96d-b682e9a7ff8e" name="Default Changelist" comment="" />
+      <created>1578336554009</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1578336554009</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="361" y="71" key="#Project_Structure" timestamp="1585131748604">
+      <screen x="0" y="0" width="1536" height="826" />
+    </state>
+    <state x="361" y="71" key="#Project_Structure/0.0.1536.826@0.0.1536.826" timestamp="1585131748604" />
+    <state x="1920" y="9" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584335388003">
+      <screen x="1920" y="0" width="1024" height="720" />
+    </state>
+    <state x="1920" y="9" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.826/1920.0.1024.720@1920.0.1024.720" timestamp="1584335388003" />
+    <state x="532" y="215" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583313069894">
+      <screen x="0" y="0" width="1536" height="826" />
+    </state>
+    <state x="532" y="215" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.826@0.0.1536.826" timestamp="1583313069894" />
+    <state x="822" y="256" key="AndroidProcessChooserDialog" timestamp="1587324756722">
+      <screen x="0" y="0" width="1536" height="826" />
+    </state>
+    <state x="822" y="256" key="AndroidProcessChooserDialog/0.0.1536.826/1920.0.1024.720@0.0.1536.826" timestamp="1587324756722" />
+    <state x="438" y="126" key="FileChooserDialogImpl" timestamp="1587676270337">
+      <screen x="0" y="0" width="1536" height="826" />
+    </state>
+    <state x="437" y="125" key="FileChooserDialogImpl/0.0.1536.826/1920.0.1024.720@0.0.1536.826" timestamp="1584388572817" />
+    <state x="2211" y="109" key="FileChooserDialogImpl/0.0.1536.826/1920.0.1024.720@1920.0.1024.720" timestamp="1585166469400" />
+    <state x="438" y="126" key="FileChooserDialogImpl/0.0.1536.826@0.0.1536.826" timestamp="1587676270337" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1587812771909">
+      <screen x="0" y="0" width="1536" height="826" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1536.826/1920.0.1024.720@0.0.1536.826" timestamp="1584389518677" />
+    <state width="498" height="398" key="SwitcherDM/0.0.1536.826/1920.0.1024.720@1920.0.1024.720" timestamp="1581981514424" />
+    <state width="498" height="446" key="SwitcherDM/0.0.1536.826@0.0.1536.826" timestamp="1587812771909" />
+    <state x="470" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1588517318005">
+      <screen x="0" y="0" width="1536" height="826" />
+    </state>
+    <state x="470" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.826/1920.0.1024.720@0.0.1536.826" timestamp="1588517318005" />
+    <state x="470" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.826/1920.0.1024.720@1920.0.1024.720" timestamp="1588447397202" />
+    <state x="2312" y="279" key="com.intellij.ide.util.TipDialog/0.0.1536.826/1920.0.1280.976@1920.0.1280.976" timestamp="1586482747671" />
+    <state x="470" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.826@0.0.1536.826" timestamp="1587762576291" />
+    <state x="421" y="72" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1583296120135">
+      <screen x="0" y="0" width="1536" height="826" />
+    </state>
+    <state x="421" y="72" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.826@0.0.1536.826" timestamp="1583296120135" />
+    <state x="2113" y="19" width="606" height="701" key="find.popup" timestamp="1587521467150">
+      <screen x="1920" y="0" width="1024" height="720" />
+    </state>
+    <state x="462" y="11" width="611" height="804" key="find.popup/0.0.1536.826/1920.0.1024.720@0.0.1536.826" timestamp="1587345825578" />
+    <state x="2113" y="19" width="606" height="701" key="find.popup/0.0.1536.826/1920.0.1024.720@1920.0.1024.720" timestamp="1587521467150" />
+    <state x="373" y="22" width="616" height="804" key="find.popup/0.0.1536.826@0.0.1536.826" timestamp="1583296138341" />
+    <state x="425" y="182" key="run.anything.popup" timestamp="1587721390712">
+      <screen x="0" y="0" width="1536" height="826" />
+    </state>
+    <state x="425" y="182" key="run.anything.popup/0.0.1536.826@0.0.1536.826" timestamp="1587721390712" />
+    <state x="2207" y="128" width="672" height="591" key="search.everywhere.popup" timestamp="1582264207273">
+      <screen x="1920" y="0" width="1024" height="720" />
+    </state>
+    <state x="2207" y="128" width="672" height="591" key="search.everywhere.popup/0.0.1536.826/1920.0.1024.720@1920.0.1024.720" timestamp="1582264207273" />
+    <state x="491" y="324" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1586435563088">
+      <screen x="0" y="0" width="1536" height="826" />
+    </state>
+    <state x="491" y="324" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1536.826/1920.0.1024.720@0.0.1536.826" timestamp="1586435563088" />
+  </component>
+</project>

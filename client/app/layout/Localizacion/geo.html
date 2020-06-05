@@ -1,0 +1,85 @@
+<template name="map">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form class="input_mhs">
+                <div class="form-group">
+                    <label for="tracto">Ingrese la placa que decea:123<rastrear></rastrear>:</label>
+                        <select class="form-control tracto" name="tracto" id="tracto">
+                            {{#each tracto_list}} {{>combo_tracto}} {{/each}}
+                        </select>
+                </div>
+                <button type="submit" class="btn btn-default btn-submit-placa">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="map-container">
+        {{#unless geolocationError}}
+        {{> googleMap name="map" options=mapOptions}}
+        {{else}}
+        Geolocation failed: {{geolocationError}}
+        {{/unless}}
+    </div>
+    {{#each posicion}}
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form class="input_mhs">
+                <div class="form-group">
+                    <label for="tracto">Placa Actual<rastrear></rastrear>:</label>
+                    <input type="text" value="{{Placa}}" disabled>
+                </div>
+            </form>
+        </div>
+    </div>
+    <input type="text" class="latitud" value="{{Latitud}}">
+    <input type="text" class="longitud" value="{{Longitud}}">
+    {{/each}}
+</template>
+
+
+<template name="unidad">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form class="input_mhs">
+                <h1>ESTAMOS POR BUEN CAMINO</h1>
+                <div class="form-group">
+                    <label for="tracto">Ingrese la placa que decea:<rastrear></rastrear>:</label>
+                        <select class="form-control tracto" name="tracto" id="tracto">
+                            {{#each tracto_list}} {{>combo_tracto}} {{/each}}
+                        </select>
+                </div>
+                <button type="submit" class="btn btn-default btn-submit-placa">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="map-container">
+        {{#unless geolocationError}}
+        {{> googleMap name="map" options=mapOptions}}
+        {{else}}
+        Geolocation failed: {{geolocationError}}
+        {{/unless}}
+    </div>
+</template>
+
+<template name="encomienda">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form class="input_mhs">
+                <h1>Mostramos la encomienda</h1>
+                <div class="form-group">
+                    <label for="tracto">Ingrese la placa que decea:<rastrear></rastrear>:</label>
+                        <select class="form-control tracto" name="tracto" id="tracto">
+                            {{#each Encomienda}} {{>combo_tracto}} {{/each}}
+                        </select>
+                </div>
+                <button type="submit" class="btn btn-default btn-submit-placa">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="map-container">
+        {{#unless geolocationError}}
+        {{> googleMap name="map" options=mapOptions}}
+        {{else}}
+        Geolocation failed: {{geolocationError}}
+        {{/unless}}
+    </div>
+</template>

@@ -1,0 +1,174 @@
+<template name="Crear_Cliente">
+    <h1> Crear Cliente</h1>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form class="input_mhs">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo</label>
+                    <input type="text" class="form-control NombreCliente" placeholder="Ingresar nombre completo" id="NombreCliente" required>
+                </div>
+                <div class="form-group">
+                    <label for="ci">Cedula de identidad</label>
+                    <input type="number" class="form-control CiCliente" placeholder="Ingrese su Cedula de identidad" id="CiCliente" required>
+                </div>
+                <div class="form-group">
+                    <label for="nacimiento">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control NacimientoCliente" placeholder="Ingrese su fecha de nacimiento" id="NacimientoCliente" required>
+                </div>
+                <div class="form-group">
+                    <label for="correo">Correo Electronico</label>
+                    <input type="email" class="form-control CorreoCliente" id="CorreoCliente" placeholder="Ingrese su correo electronico" required>
+                </div>
+                <div class="form-group">
+                    <label for="sexo">Sexo</label>
+                    <select class="form-control SexoCliente" name="sexo">
+                        <option value="1">Masculino</option>
+                        <option value="0">Femenino</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="celular">Celular</label>
+                    <input type="number" class="form-control CelularCliente" placeholder="Ingresar número de celular" id="CelularCliente" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Telefono</label>
+                    <input type="number" class="form-control TelefonoCliente" id="TelefonoCliente" placeholder="Ingresar número de telefono">
+                </div>
+                <div class="form-group">
+                    <label for="direccion">Direccion</label>
+                    <input type="text" class="form-control DireccionCliente" id="DireccionCliente" placeholder="Ingresar direccio de vivienda">
+                </div>
+                <div class="form-group">
+                    <label for="empresa">Empresa</label>
+                    <input type="text" class="form-control EmpresaCliente" id="EmpresaCliente" placeholder="Ingresar nombre de la empresa">
+                </div>
+                <div class="form-group">
+                    <label for="cargo">Cargo</label>
+                    <input type="text" class="form-control CargoCliente" id="CargoCliente" placeholder="Ingrese su cargo actual en la empresa">
+                </div>
+                <div class="form-group">
+                    <label for="pais">Pais</label>
+                    <select class="form-control PaisCliente" name="pais">
+                        <option value="Argentina">Argentina</option>
+                        <option value="Brazil">Brazil</option>
+                        <option value="Bolivia">Bolivia</option>
+                        <option value="Chile">Chile</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="Ecuador">Ecuador</option>
+                        <option value="Guyana">Guyana</option>
+                        <option value="Paraguay">Paraguay</option>
+                        <option value="Peru">Peru</option>
+                        <option value="Suriname">Suriname</option>
+                        <option value="Uruguay">Uruguay</option>
+                        <option value="Venezuela">Venezuela</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="cuidad">Ciudad</label>
+                    <input type="text" class="form-control CiudadCliente" id="CiudadCliente" placeholder="Ingrese la cuidad en la que se encuentra su empresa">
+                </div>
+                <button type="submit" class="btn btn-default btn-submit-cliente">Submit</button>
+            </form>
+        </div>
+        <div class="panel-body">
+            <div id="table-mhs">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th><center>Nombre</center></th>
+                        <th><center>CI</center></th>
+                        <th><center>Cargo</center></th>
+                        <th><center>Empresa</center></th>
+                        <th><center>Acciones</center></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each cliente_list}} {{>lista_cliente}} {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="lista_cliente">
+    <tr class="student_row" align="center">
+        {{#if editing_cliente}}
+        <td class="editBoxCliente">
+            <input class="EditNombreCliente form-control" type="text" name="edit_nombre" value="{{Nombre}}">
+        </td>
+        <td class="editBoxCliente">
+            <input class="EditCiCliente form-control" type="text" name="edit_email" value="{{Ci}}">
+        </td>
+        <td class="editBoxCliente">
+            <input class="EditCargoCliente form-control" type="text" name="edit_celular" value="{{Cargo}}">
+        </td>
+        <td class="editBoxCliente">
+            <input class="EditEmpresaCliente form-control" type="text" name="edit_cargo" value="{{Empresa}}">
+        </td>
+        {{else}}
+        <td>{{Nombre}}</td>
+        <td>{{Ci}}</td>
+        <td>{{Cargo}}</td>
+        <td>{{Empresa}}</td>
+        {{/if}}
+        <td align="center">
+            <a href="#"><span class="glyphicon glyphicon-trash remove_cliente"></span></a>
+        </td>
+    </tr>
+</template>
+
+<template name="combo_cliente">
+    <option value="{{Empresa}}">{{Nombre}}</option>
+</template>
+
+<template name="ClienteUsuario">
+    <h1>Lista de Clientes</h1>
+    <div class="panel-body">
+        <div id="table-mhs">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th><center>Nombre</center></th>
+                    <th><center>CI</center></th>
+                    <th><center>Cargo</center></th>
+                    <th><center>Empresa</center></th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each admin_list}} {{>lista_cliente_secre}} {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>
+
+<template name="lista_cliente_secre">
+    <tr class="student_row" align="center">
+        <td>{{Nombre}}</td>
+        <td>{{Ci}}</td>
+        <td>{{Cargo}}</td>
+        <td>{{Empresa}}</td>
+    </tr>
+</template>
+
+<template name="Cliente_Info">
+    <h1>Informacion personal de {{nombre}}</h1>
+    <div class="panel-body">
+        <div id="table-mhs">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th><center>Nombre</center></th>
+                    <th><center>CI</center></th>
+                    <th><center>Cargo</center></th>
+                    <th><center>Empresa</center></th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each cliente_list}} {{>lista_cliente_secre}} {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>

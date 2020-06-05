@@ -1,0 +1,64 @@
+<template name="Crear_Sancion">
+    <h1> Registrar Sanción</h1>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form class="input_mhs">
+                <div class="form-group">
+                    <label for="SocioSancion">Socio:</label>
+                    <select class="form-control SocioSancion" name="SocioChata" id="SocioSancion">
+                        {{#each socio_list}} {{>combo_socio}} {{/each}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="DetalleSancion">Descripción de la sanción:</label>
+                    <textarea class="form-control DetalleSancion" name="DetalleSancion" id="DetalleSancion" cols="30" rows="10" placeholder="Ingresar el detalle de la sanción"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="PuntoSancion">Puntos de sanción</label>
+                    <input type="number" class="form-control PuntoSancion" id="PuntoSancion" placeholder="Ingresar los puntos de sanción">
+                </div>
+                <button type="submit" class="btn btn-default btn-submit-sancion">Submit</button>
+            </form>
+        </div>
+        <div class="panel-body">
+            <div id="table-mhs">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th><center>Socio</center></th>
+                        <th><center>Descripción</center></th>
+                        <th><center>Peso</center></th>
+                        <th><center>Acciones</center></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each sancion_list}} {{>lista_sancion}} {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="lista_sancion">
+    <tr class="student_row" align="center">
+        {{#if editing_sancion}}
+        <td class="editBoxSancion">
+            <input class="EditSocio form-control" type="text" name="edit_socio" value="{{Socio}}">
+        </td>
+        <td class="editBoxSancion">
+            <input class="EditDescripción form-control" type="text" name="edit_desmontado" value="{{Descripcion}}">
+        </td>
+        <td class="editBoxSancion">
+            <input class="EditPeso form-control" type="number" name="edit_peso" value="{{Peso}}">
+        </td>
+        {{else}}
+        <td>{{Socio}}</td>
+        <td>{{Detalle}}</td>
+        <td>{{Punto}}</td>
+        {{/if}}
+        <td align="center">
+            <a href="#"><span class="glyphicon glyphicon-trash remove_sancion"></span></a>
+        </td>
+    </tr>
+</template>

@@ -1,0 +1,110 @@
+<template name="Crear_Socio">
+    <h1> Crear socio</h1>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form class="input_mhs">
+                <div class="form-group">
+                    <label for="NombreSocio">Nombre Completo</label>
+                    <input type="text" class="form-control NombreSocio" placeholder="Ingresar nombre completo" id="NombreSocio" required>
+                </div>
+                <div class="form-group">
+                    <label for="CiSocio">Cedula de identidad</label>
+                    <input type="number" class="form-control CiSocio" placeholder="Ingrese su Cedula de identidad" id="CiSocio" required>
+                </div>
+                <div class="form-group">
+                    <label for="NacimientoSocio">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control NacimientoSocio" placeholder="Ingrese su fecha de nacimiento" id="NacimientoSocio" required>
+                </div>
+                <div class="form-group">
+                    <label for="CorreoSocio">Correo Electronico</label>
+                    <input type="email" class="form-control CorreoSocio" id="CorreoSocio" placeholder="Ingrese su correo electronico" required>
+                </div>
+                <div class="form-group">
+                    <label for="sexo">Sexo</label>
+                    <select class="form-control SexoSocio" id="SexoSocio">
+                        <option value="1">Masculino</option>
+                        <option value="0">Femenino</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="celular">Celular</label>
+                    <input type="number" class="form-control CelularSocio" placeholder="Ingresar número de celular" id="CelularSocio" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Telefono</label>
+                    <input type="number" class="form-control TelefonoSocio" id="TelefonoSocio" placeholder="Ingresar número de telefono">
+                </div>
+                <div class="form-group">
+                    <label for="direccion">Direccion</label>
+                    <input type="text" class="form-control DireccionSocio" id="DireccionSocio" placeholder="Ingresar direccio de vivienda">
+                </div>
+                <div class="form-group">
+                    <label for="rol">Rol</label>
+                    <select class="form-control RolSocio" name="rol">
+                        <option value="dueño">Dueño</option>
+                        <option value="chofer">Chofer</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="categoria">Categoria</label>
+                    <select class="form-control CategoriaSocio" name="categoria">
+                        <option value="a">A</option>
+                        <option value="b">B</option>
+                        <option value="c">C</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-default btn-submit-socio">Submit</button>
+            </form>
+        </div>
+        <div class="panel-body">
+            <div id="table-mhs">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th><center>Nombre</center></th>
+                        <th><center>CI</center></th>
+                        <th><center>Celular</center></th>
+                        <th><center>Rol</center></th>
+                        <th><center>Categoria</center></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each socio_list }} {{>lista_socio }} {{/each }}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="lista_socio">
+    <tr class="student_row" align="center">
+        {{#if editing_socio}}
+        <td class="editBoxSocio">
+            <input class="EditNombreSocio form-control" type="text" name="edit_nombre" value="{{Nombre}}">
+        </td>
+        <td class="editBoxAdmin">
+            <input class="EditCiSocio form-control" type="text" name="edit_email" value="{{Ci}}">
+        </td>
+        <td class="editBoxAdmin">
+            <input class="EditCelularSocio form-control" type="text" name="edit_celular" value="{{Celular}}">
+        </td>
+        <td class="editBoxAdmin">
+            <input class="EditRolSocio form-control" type="text" name="edit_cargo" value="{{Rol}}">
+        </td>
+        {{else}}
+        <td>{{Nombre}}</td>
+        <td>{{Ci}}</td>
+        <td>{{Celular}}</td>
+        <td>{{Rol}}</td>
+        {{/if}}
+        <td align="center">
+            <a href="#"><span class="glyphicon glyphicon-trash remove_socio"></span></a>
+        </td>
+    </tr>
+</template>
+
+<template name="combo_socio">
+    <option value="{{_id}}">{{Nombre}}</option>
+</template>
+

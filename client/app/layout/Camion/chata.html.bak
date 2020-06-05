@@ -1,0 +1,168 @@
+<template name="Crear_Chata">
+    <h1> Registrar Chata</h1>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form class="input_mhs">
+                <div class="form-group">
+                    <label for="AnchoChata">Ancho</label>
+                    <input type="number" class="form-control AnchoChata" placeholder="Ingrese el ancho de la chata" id="AnchoChata" required>
+                </div>
+                <div class="form-group">
+                    <label for="AltoChata">Alto</label>
+                    <input type="number" class="form-control AltoChata" placeholder="Ingrese la alto de la chata" id="AltoChata" required>
+                </div>
+                <div class="form-group">
+                    <label for="LargoChata">Largo</label>
+                    <input type="number" class="form-control LargoChata" placeholder="el largo de la chata" id="LargoChata" required>
+                </div>
+                <div class="form-group">
+                    <label for="EjesChata">Ejes</label>
+                    <input type="number" class="form-control EjesChata" id="EjesChata" placeholder="Ingrese el numero de ejes de la chata" required>
+                </div>
+                <div class="form-group">
+                    <label for="ClaseChata">Clase</label>
+                    <select name="ClaseChata" class="form-control ClaseChata" id="ClaseChata">
+                        <option value="Granel">Granel</option>
+                        <option value="Lowboy">Lowboy</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="PesoChata">Peso</label>
+                    <input type="number" class="form-control PesoChata" id="PesoChata" placeholder="Ingresar el peso de la chata">
+                </div>
+                <div class="form-group">
+                    <label for="PlacaChata">Placa</label>
+                    <input type="text" class="form-control PlacaChata" id="PlacaChata" placeholder="Ingresar la placa de la chata">
+                </div>
+                <div class="form-group">
+                    <label for="SocioChata">Socio</label>
+                    <select class="form-control SocioChata" name="SocioChata" id="SocioChata">
+                        {{#each socio_list}} {{>combo_socio}} {{/each}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="MarcaChata">Marca</label>
+                    <input type="text" class="form-control MarcaChata" id="MarcaChata" placeholder="Ingresar la marca de la chata">
+                </div>
+                <button type="submit" class="btn btn-default btn-submit-chata">Submit</button>
+            </form>
+        </div>
+        <div class="panel-body">
+            <div id="table-mhs">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th><center>Placa</center></th>
+                        <th><center>Marca</center></th>
+                        <th><center>Clase</center></th>
+                        <th><center>Tipo</center></th>
+                        <th><center>Acciones</center></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each chata_list}} {{>lista_chata}} {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="lista_chata">
+    <tr class="student_row" align="center">
+        {{#if editing_chata}}
+        <td class="editBoxChata">
+            <input class="EditPlacaChata form-control" type="text" name="edit_placa" value="{{Placa}}">
+        </td>
+        <td class="editBoxChata">
+            <input class="EditMarcaChata form-control" type="text" name="edit_marca" value="{{Marca}}">
+        </td>
+        <td class="editBoxChata">
+            <input class="EditClaseChata form-control" type="text" name="edit_clase" value="{{Clase}}">
+        </td>
+        <td class="editBoxAdmin">
+            <input class="EditTipoChata form-control" type="text" name="edit_tipo" value="{{Tipo}}">
+        </td>
+        {{else}}
+        <td>{{Placa}}</td>
+        <td>{{Marca}}</td>
+        <td>{{Clase}}</td>
+        <td>{{Tipo}}</td>
+        {{/if}}
+        <td align="center">
+            <a href="#"><span class="glyphicon glyphicon-trash remove_chata"></span></a>
+        </td>
+    </tr>
+</template>
+
+<template name="reparto">
+    <div class="panel-body">
+        <h3><center>Chata</center></h3>
+        <div id="table-mhs">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th><center>Placa</center></th>
+                    <th><center>Marca</center></th>
+                    <th><center>Clase</center></th>
+                    <th><center>Peso</center></th>
+                    <th><center>Ejes</center></th>
+                    <th><center>Acción</center></th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each chata_list }} {{>reparto_chata }} {{/each }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel-body">
+        <h3><center>Tracto</center></h3>
+        <div id="table-mhs">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th><center>Placa</center></th>
+                    <th><center>Marca</center></th>
+                    <th><center>Cilindrada</center></th>
+                    <th><center>Ejes</center></th>
+                    <th><center>Tipo</center></th>
+                    <th><center>Acción</center></th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each tracto_list }} {{>reparto_tracto }} {{/each }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <center><button type="submit" class="btn btn-primary btn-lg btn-repartir">Repartir</button></center>
+    <br>
+    <br>
+</template>
+
+<template name="reparto_chata">
+    <tr class="student_row" align="center">
+        <td>{{Placa}}</td>
+        <td>{{Marca}}</td>
+        <td>{{Clase}}</td>
+        <td>{{Peso}} Kg.</td>
+        <td>{{Ejes}}</td>
+        <td align="center">
+            <a href="#"><span class="glyphicon glyphicon-remove accept_chata"></span></a>
+        </td>
+    </tr>
+</template>
+
+<template name="reparto_tracto">
+    <tr class="student_row" align="center">
+        <td>{{Placa}}</td>
+        <td>{{Marca}}</td>
+        <td>{{Cilindrada}} CC</td>
+        <td>{{Ejes}}</td>
+        <td><input class="EditColorTracto form-control" type="color" name="edit_color" value="{{Color}}" disabled></td>
+        <td align="center">
+            <a href="#"><span class="glyphicon glyphicon-remove accept_tracto"></span></a>
+        </td>
+    </tr>
+</template>

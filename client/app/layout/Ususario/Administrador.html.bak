@@ -1,0 +1,124 @@
+<template name="Crear_Admin">
+    <h1> Crear Administrador</h1>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form class="input_mhs">
+                <div class="form-group">
+                    <label for="NombreAdmin">Nombre Completo</label>
+                    <input type="text" class="form-control NombreAdmin" placeholder="Ingresar nombre completo" id="NombreAdmin" required>
+                </div>
+                <div class="form-group">
+                    <label for="CiAdmin">Cedula de identidad</label>
+                    <input type="number" class="form-control CiAdmin" placeholder="Ingrese su Cedula de identidad" id="CiAdmin" required>
+                </div>
+                <div class="form-group">
+                    <label for="NacimientoAdmin">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control NacimientoAdmin" placeholder="Ingrese su fecha de nacimiento" id="NacimientoAdmin" required>
+                </div>
+                <div class="form-group">
+                    <label for="CorreoAdmin">Correo Electronico</label>
+                    <input type="email" class="form-control CorreoAdmin" id="CorreoAdmin" placeholder="Ingrese su correo electronico" required>
+                </div>
+                <div class="form-group">
+                    <label for="SexoAdmin">Sexo</label>
+                    <select class="form-control SexoAdmin" name="SexoAdmin" id="SexoAdmin">
+                        <option value="1">Masculino</option>
+                        <option value="0">Femenino</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="CelularAdmin">Celular</label>
+                    <input type="number" class="form-control CelularAdmin" placeholder="Ingresar número de celular" id="CelularAdmin" required>
+                </div>
+                <div class="form-group">
+                    <label for="TelefonoAdmmin">Telefono</label>
+                    <input type="number" class="form-control TelefonoAdmmin" id="TelefonoAdmin" placeholder="Ingresar número de telefono">
+                </div>
+                <div class="form-group">
+                    <label for="direccion">Direccion</label>
+                    <input type="text" class="form-control DireccionAdmin" id="DireccionAdmin" placeholder="Ingresar direccio de vivienda">
+                </div>
+                <div class="form-group">
+                    <label for="cargo">Cargo</label>
+                    <select class="form-control CargoAdmin" id="CargoAdmin">
+                        <option value="presidente">Presidente</option>
+                        <option value="secretaria">Secretaria</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="gestion">Gestión</label>
+                    <input type="text" class="form-control GestionAdmin" id="GestionAdmin" placeholder="Ingresar direccio de vivienda">
+                </div>
+                <button type="submit" class="btn btn-danger btn-submit-admin">Submit</button>
+            </form>
+        </div>
+        <div class="panel-body">
+            <div id="table-mhs">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th><center>Nombre</center></th>
+                            <th><center>CI</center></th>
+                            <th><center>Celular</center></th>
+                            <th><center>Cargo</center></th>
+                            <th><center>Acciones</center></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each admin_list}} {{>lista_admin}} {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</template>
+
+<template name="lista_admin">
+    <tr class="admin_row" align="center">
+        {{#if editing_admin}}
+        <td class="editBoxAdmin">
+            <input class="EditNombreadmin form-control" type="text" name="edit_nombre" value="{{Nombre}}">
+        </td>
+        <td class="editBoxAdmin">
+            <input class="EditCiAdmin form-control" type="text" name="edit_email" value="{{Ci}}">
+        </td>
+        <td class="editBoxAdmin">
+            <input class="EditCelularAdmin form-control" type="text" name="edit_celular" value="{{Celular}}">
+        </td>
+        <td class="editBoxAdmin">
+            <input class="EditCargoAdmin form-control" type="text" name="edit_cargo" value="{{Cargo}}">
+        </td>
+        {{else}}
+        <td>{{Nombre}}</td>
+        <td>{{Ci}}</td>
+        <td>{{Celular}}</td>
+        <td>{{Cargo}}</td>
+        {{/if}}
+        <td align="center">
+            <a href="#"><span class="glyphicon glyphicon-trash remove_admin"></span></a>
+        </td>
+    </tr>
+</template>
+
+<template name="AdminUsuario">
+    <h1>Administrar usuarios</h1>
+    <div class="panel-body">
+        <div id="table-mhs">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th><center>Nombre</center></th>
+                    <th><center>CI</center></th>
+                    <th><center>Celular</center></th>
+                    <th><center>Cargo</center></th>
+                    <th><center>Acciones</center></th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each admin_list}} {{>lista_admin}} {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>

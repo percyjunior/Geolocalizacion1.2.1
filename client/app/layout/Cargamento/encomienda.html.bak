@@ -1,0 +1,287 @@
+<template name="Crear_Encomienda">
+    <h1> Registrar Encomienda</h1>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form class="input_mhs">
+                <div class="form-group">
+                    <label for="ClienteEncomienda">Cliente:</label>
+                    <select class="form-control ClienteEncomienda" name="ClienteEncomienda" id="ClienteEncomienda">
+                        {{#each cliente_list }} {{>combo_cliente }} {{/each }}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label >¿Cargamento especial?</label>
+                    <br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input especial Si" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="true" checked>
+                        <label class="form-check-label" for="inlineRadio1">Si</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input especial No" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="false" checked>
+                        <label class="form-check-label" for="inlineRadio2">No</label>
+                    </div>
+                </div>
+                {{#if especial}}
+                <div class="form-group">
+                    <label for="LargoEncomienda">Largo</label>
+                    <input type="number" class="form-control largoEncomienda" placeholder="Ingrese el largo de la encomienda" id="LargoEncomienda" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Metros</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="anchoEncomienda">Anchol</label>
+                    <input type="number" class="form-control anchoEncomienda" placeholder="Ingrese el ancho de la encomienda" id="anchoEncomienda" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Metros</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="altoEncomienda">Alto</label>
+                    <input type="number" class="form-control altoEncomienda" placeholder="Ingrese el alto de la encomienda" id="altoEncomienda" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Metros</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="cantidadEncomienda">Cantidad de unidades</label>
+                    <input type="number" class="form-control cantidadEncomienda" placeholder="Ingrese la cantidad de unidades" id="cantidadEncomienda" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Und.</span>
+                    </div>
+                </div>
+                {{else}}
+                <div class="form-group">
+                    <label for="PesoEncomienda">Peso Total</label>
+                    <input type="number" class="form-control PesoEncomienda" placeholder="Ingrese el peso total del contrato" id="PesoEncomienda" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Toneladas</span>
+                    </div>
+                </div>
+                {{/if}}
+                <div class="form-group">
+                    <label for="OrigenPaisEncomienda"> Pais origen de cargamento</label>
+                    <select class="form-control OrigenPaisEncomienda" name="pais">
+                        <option value="Argentina">Argentina</option>
+                        <option value="Brazil">Brazil</option>
+                        <option value="Bolivia">Bolivia</option>
+                        <option value="Chile">Chile</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="Ecuador">Ecuador</option>
+                        <option value="Guyana">Guyana</option>
+                        <option value="Paraguay">Paraguay</option>
+                        <option value="Peru">Peru</option>
+                        <option value="Suriname">Suriname</option>
+                        <option value="Uruguay">Uruguay</option>
+                        <option value="Venezuela">Venezuela</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="OrigenCuidadEncomienda">Cuidad origen de cargamento</label>
+                    <input type="text" class="form-control OrigenCuidadEncomienda" placeholder="Ingrese el cuidad de recolección de encomienda" id="OrigenCuidadEncomienda" required>
+                </div>
+                <div class="form-group">
+                    <label for="DestinoPaisEncomienda">Pais destino de cargamento</label>
+                    <select class="form-control DestinoPaisEncomienda" name="pais">
+                        <option value="Argentina">Argentina</option>
+                        <option value="Brazil">Brazil</option>
+                        <option value="Bolivia">Bolivia</option>
+                        <option value="Chile">Chile</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="Ecuador">Ecuador</option>
+                        <option value="Guyana">Guyana</option>
+                        <option value="Paraguay">Paraguay</option>
+                        <option value="Peru">Peru</option>
+                        <option value="Suriname">Suriname</option>
+                        <option value="Uruguay">Uruguay</option>
+                        <option value="Venezuela">Venezuela</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="DestinoCuidadEncomienda">Cuidad destino de cargamento</label>
+                    <input type="text" class="form-control DestinoCuidadEncomienda" id="DestinoCuidadEncomienda" placeholder="Ingrese el cuidad de despacho de encomienda" required>
+                </div>
+                <div class="form-group">
+                    <label for="PrecioEncomienda">Precio de transporte de encomienda</label>
+                    <input type="text" class="form-control PrecioEncomienda" placeholder="Ingresar monto de paga por encomienda" id="PrecioEncomienda" required >
+                    <div class="input-group-append">
+                        <span class="input-group-text">$/Tonelada</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="FechaCargaEncomienda">Fecha de montado de cargamento</label>
+                    <input type="date" class="form-control FechaCargaEncomienda" id="FechaCargaEncomienda" placeholder="Ingresar fecha de montado de cargamento">
+                </div>
+                <div class="form-group">
+                    <label for="FechaEntregaEncomienda">Fecha de desmontado de cargamento</label>
+                    <input type="date" class="form-control FechaEntregaEncomienda" id="FechaEntregaEncomienda" placeholder="Ingresar fecha de desmontado de cargamento">
+                </div>
+                {{#if especial}}
+                <button type="submit" class="tn btn-primary py-3 px-4 btn-submit-encomiendaEspecial">Submit</button>
+                {{else}}
+                <button type="submit" class="tn btn-primary py-3 px-4 btn-submit-encomienda">Submit</button>
+                {{/if}}
+            </form>
+        </div>
+        <div class="panel-body">
+            <div id="table-mhs col-md-12">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th><center>Origen</center></th>
+                        <th><center>Destino</center></th>
+                        <th><center>Fecha Montado</center></th>
+                        <th><center>Fecha Desmontado</center></th>
+                        <th><center>Acciones</center></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each encomienda_list}} {{>lista_encomienda}} {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="Form_Encomienda" class="request-form ftco-animate">
+    <div class="panel col-md-12">
+        <br>
+        <form class="input_mhs col-md-12">
+            <div class="form-group">
+                <label for="PesoEncomienda">Peso Total</label>
+                <input type="number" class="form-control PesoEncomienda" placeholder="Ingrese el peso total del contrato" id="PesoEncomienda" required>
+            </div>
+            <div class="form-group">
+                <label for="OrigenPaisEncomienda"> Pais origen de cargamento</label>
+                <select class="form-control OrigenPaisEncomienda" name="pais">
+                    <option value="Argentina">Argentina</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="Bolivia">Bolivia</option>
+                    <option value="Chile">Chile</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Ecuador">Ecuador</option>
+                    <option value="Guyana">Guyana</option>
+                    <option value="Paraguay">Paraguay</option>
+                    <option value="Peru">Peru</option>
+                    <option value="Suriname">Suriname</option>
+                    <option value="Uruguay">Uruguay</option>
+                    <option value="Venezuela">Venezuela</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="OrigenCuidadEncomienda">Cuidad origen de cargamento</label>
+                <input type="text" class="form-control OrigenCuidadEncomienda" placeholder="Ingrese el cuidad de recolección de encomienda" id="OrigenCuidadEncomienda" required>
+            </div>
+            <div class="form-group">
+                <label for="DestinoPaisEncomienda">Pais destino de cargamento</label>
+                <select class="form-control OrigenPaisEncomienda" name="pais">
+                    <option value="Argentina">Argentina</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="Bolivia">Bolivia</option>
+                    <option value="Chile">Chile</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Ecuador">Ecuador</option>
+                    <option value="Guyana">Guyana</option>
+                    <option value="Paraguay">Paraguay</option>
+                    <option value="Peru">Peru</option>
+                    <option value="Suriname">Suriname</option>
+                    <option value="Uruguay">Uruguay</option>
+                    <option value="Venezuela">Venezuela</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="DestinoCuidadEncomienda">Cuidad destino de cargamento</label>
+                <input type="text" class="form-control DestinoCuidadEncomienda" id="DestinoCuidadEncomienda" placeholder="Ingrese el cuidad de despacho de encomienda" required>
+            </div>
+            <div class="input-group">
+                <label for="PrecioEncomienda">Precio de transporte de encomienda</label>
+                <input type="text" class="form-control PrecioEncomienda" placeholder="Ingresar monto de paga por encomienda" id="PrecioEncomienda" required>
+                <div class="input-group-append">
+                    <span class="input-group-text">$</span>
+                    <span class="input-group-text">0.00</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="FechaCargaEncomienda">Fecha de montado de cargamento</label>
+                <input type="date" class="form-control FechaCargaEncomienda" id="FechaCargaEncomienda" placeholder="Ingresar fecha de montado de cargamento">
+            </div>
+            <div class="form-group">
+                <label for="FechaEntregaEncomienda">Fecha de desmontado de cargamento</label>
+                <input type="date" class="form-control FechaEntregaEncomienda" id="FechaEntregaEncomienda" placeholder="Ingresar fecha de desmontado de cargamento">
+            </div>
+            {{#if especial}}
+                <button type="submit" class="tn btn-primary py-3 px-4 btn-submit-encomiendaEspecial">Submit</button>
+            {{else}}
+                <button type="submit" class="tn btn-primary py-3 px-4 btn-submit-encomienda">Submit</button>
+            {{/if}}
+        </form>
+        <br>
+    </div>
+    <br>
+    <br>
+</template>
+
+<template name="lista_encomienda">
+    <tr class="student_row" align="center">
+        {{#if editing_encomienda}}
+        <td class="editBoxChata">
+            <input class="EditMontadoEncomienda form-control" type="text" name="edit_montado" value="{{PaisOrigen}}">
+        </td>
+        <td class="editBoxChata">
+            <input class="EditDesmontadoEncomienda form-control" type="text" name="edit_desmontado" value="{{PaisDestino}}">
+        </td>
+        <td class="editBoxChata">
+            <input class="EditFechaMontadoEncomienda form-control" type="date" name="edit_fecha_montado" value="{{FechaMontado}}">
+        </td>
+        <td class="editBoxAdmin">
+            <input class="EditFechaDesmontadoEncomienda form-control" type="date" name="edit_fecha_demostado" value="{{FechaDesmontado}}">
+        </td>
+        {{else}}
+        <td>{{PaisOrigen}}</td>
+        <td>{{PaisDestino}}</td>
+        <td>{{FechaMontado}}</td>
+        <td>{{FechaDesmontado}}</td>
+        {{/if}}
+        <td align="center">
+            <a href="#"><span class="glyphicon glyphicon-trash remove_encomienda"></span></a>
+        </td>
+    </tr>
+</template>
+
+<template name="Distribuir_Encomienda">
+    <div class="panel-body">
+            <div id="table-mhs col-md-12">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th><center>Origen</center></th>
+                        <th><center>Destino</center></th>
+                        <th><center>Fecha Montado</center></th>
+                        <th><center>Fecha Desmontado</center></th>
+                        <th><center>Acciones</center></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each encomienda_list}} {{>dist_encomienda}} {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {{#if dist}}
+        {{> reparto}}
+    {{else}}
+    {{/if}}
+</template>
+
+<template name="dist_encomienda">
+    <tr class="student_row" align="center">
+        <td>{{PaisOrigen}}</td>
+        <td>{{PaisDestino}}</td>
+        <td>{{FechaMontado}}</td>
+        <td>{{FechaDesmontado}}</td>
+        <td align="center">
+            <a><button id="distribuir" class="cambiar">Distribuir</button></a>
+        </td>
+    </tr>
+</template>
