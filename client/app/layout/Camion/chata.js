@@ -112,6 +112,8 @@ Template.Crear_Chata.events({
         var placa = tmpl.find('.PlacaChata').value;
         var socio = tmpl.find('.SocioChata').value;
         var marca = tmpl.find('.MarcaChata').value;
+        var persona = Usuario.findOne({ _id: socio });
+        var apellido = persona.Apellido + " " + persona.Nombre;
         if (NoVacio(ancho) &&
             NoVacio(alto) &&
             NoVacio(largo) &&
@@ -134,7 +136,8 @@ Template.Crear_Chata.events({
                 Marca: marca,
                 Borrar: false,
                 Habilitado: true,
-                Estado: "Libre"
+                Estado: "Libre",
+                Apellido: apellido
             };
             Meteor.call('ChataInsert', data, function(error) {
                 if (error)
@@ -326,31 +329,44 @@ Template.reparto.events({
             var contaux = 0;
             var restante;
             while (true) {
-                if (dominio.Cargamento_info.Peso == 0 || dominio.Cargamento_info.Cantidad == 0) {
+                if (dominio.Cargamento_info.Peso === 0 || dominio.Cargamento_info.Cantidad === 0) {
                     var acum = 0;
-                    _.forEach(reparto, function(camion) {
-                        aux[0] = camion.Peso;
-                        aux[1] = camion.PlacaTracto;
-                        acum += camion.Peso;
-                        contaux++;
-                    });
-
-                    //                    console.log("La ultima asigancion es de :",aux[0]);
-                    //                    console.log("La placa del camion es :",aux[1]);
-                    _.forEach(camiones, function(camion) {
-                        if (camion.PlacaTracto === aux[1]) {
-                            restante = parseFloat(camion.Peso) + (parseFloat(aux[0] * 1000));
-                        }
-                    });
-                    var restante = 28000 - restante;
-                    //                    console.log("El peso le falta al camion es de: ",restante);
-                    if (restante > 4000) {
-                        //                        console.log(reparto);
-                        var promedio = acum / contaux;
+                    debugger;
+                    console.log(reparto);
+                    if (dominio.Cargamento_info.Especial === true) {
                         _.forEach(reparto, function(camion) {
-                            camion.Peso = promedio;
+                            aux[0] = camion.Cantidad;
+                            aux[1] = camion.PlacaTracto;
+                            acum += camion.Cantidad;
+                            contaux++;
                         });
-                        //                        console.log(reparto);
+                        Meteor.call('RestarEncomiendaEspecial', dominio.Cargamento_info, function(error) {
+                            if (error)
+                                return throwError(error.reason);
+                        });
+                    } else {
+                        _.forEach(reparto, function(camion) {
+                            aux[0] = camion.Peso;
+                            aux[1] = camion.PlacaTracto;
+                            acum += camion.Peso;
+                            contaux++;
+                        });
+                        _.forEach(camiones, function(camion) {
+                            if (camion.PlacaTracto === aux[1]) {
+                                restante = parseFloat(camion.Peso) + (parseFloat(aux[0] * 1000));
+                            }
+                        });
+                        var restante = 28000 - restante;
+                        if (restante > 4000) {
+                            var promedio = acum / contaux;
+                            _.forEach(reparto, function(camion) {
+                                camion.Peso = promedio;
+                            });
+                        }
+                        Meteor.call('RestarEncomiendaNormal', dominio.Cargamento_info, function(error) {
+                            if (error)
+                                return throwError(error.reason);
+                        });
                     }
                     _.forEach(reparto, function(camion) {
                         console.log(camion);
@@ -368,15 +384,9 @@ Template.reparto.events({
                         });
                     });
                     if (dominio.Cargamento_info.Especial === false) {
-                        Meteor.call('RestarEncomiendaNormal', dominio.Cargamento_info, function(error) {
-                            if (error)
-                                return throwError(error.reason);
-                        });
+
                     } else {
-                        Meteor.call('RestarEncomiendaEspecial', dominio.Cargamento_info, function(error) {
-                            if (error)
-                                return throwError(error.reason);
-                        });
+
                     }
                     Meteor.popUp("Distribuir_Carga");
                     break;
@@ -390,7 +400,7 @@ Template.reparto.events({
                                     dominio.Cargamento_info.Cantidad -= cantidad;
                                     debugger;
                                     console.log("Se asignan ", cantidad, " al camion ", camion.Placa.Tracto);
-                                    _.extend(asignacion, { Placa: camion.Placa }, { Encomienda: id }, { Unidades: cantidad });
+                                    _.extend(asignacion, { PlacaTracto: camion.Placa.Tracto }, { PlacaChata: camion.Placa.Chata }, { Encomienda: id }, { Unidades: cantidad }, { Mostrado: false });
                                     _.extend(reparto, {
                                         [cont]: asignacion
                                     });
@@ -408,7 +418,7 @@ Template.reparto.events({
                                 var peso = 28000 - camion.Peso;
                                 peso /= 1000;
                                 if (peso > dominio.Cargamento_info.Peso) {
-                                    _.extend(asignacion, { PlacaTracto: camion.Placa.Tracto }, { PlacaChata: camion.Placa.Chata }, { Encomienda: id }, { Peso: dominio.Cargamento_info.Peso });
+                                    _.extend(asignacion, { PlacaTracto: camion.Placa.Tracto }, { PlacaChata: camion.Placa.Chata }, { Encomienda: id }, { Peso: dominio.Cargamento_info.Peso }, { Mostrado: false });
                                     _.extend(reparto, {
                                         [cont]: asignacion
                                     });

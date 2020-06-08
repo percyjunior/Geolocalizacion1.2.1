@@ -22,7 +22,8 @@ Template.Distribuir_Carga.events({
         });
     },
     'click .cerrar': function(e, tmpl) {
-        var encomiendas = Carga.find({ Mostrar: false });
+        var encomiendas = Carga.find({ Mostrado: false });
+        console.log(encomiendas);
         _.forEach(encomiendas.fetch(), function(singular) {
             console.log(singular._id);
             Meteor.call('CargaMostrado', singular, function(error) {
@@ -38,6 +39,11 @@ Template.Distribuir_Carga.events({
 Template.Distribuir_Carga.helpers({
     carga_list: function() {
         return Carga.find({ Mostrado: false });
+    }
+});
+Template.Lista_Carga.helpers({
+    carga_list: function() {
+        return Carga.find({});
     }
 });
 Template.Socio_Encomienda.helpers({

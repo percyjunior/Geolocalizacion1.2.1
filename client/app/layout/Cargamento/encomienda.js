@@ -1,18 +1,22 @@
 Session.setDefault('dist', false);
 Session.setDefault('especial', false);
+var ValFecha = function(value) {
+    debugger;
+    var bool = moment().isAfter(value);
+    if (bool === false) {
+        return true;
+    }
+    Bert.alert("La Fecha ingresada es incorrecta", "danger", "growl-top-right");
+}
 var NoVacio = function(value) {
+    debugger;
     if (value && value != "") {
         return true
     }
     Bert.alert("Porfavor llene todos los campos del formulario", "danger", "growl-top-right");
 }
-var ValFecha = function(value) {
-        if (value && value != "") {
-            return true
-        }
-        Bert.alert("Porfavor llene todos los campos del formulario", "danger", "growl-top-right");
-    }
-    //Encomienda
+
+//Encomienda
 Template.Crear_Encomienda.events({
     'click .btn-submit-encomienda': function(e, tmpl) {
         var cliente = tmpl.find('.ClienteEncomienda').value;
@@ -25,11 +29,6 @@ Template.Crear_Encomienda.events({
         var fechamontado = tmpl.find('.FechaCargaEncomienda').value;
         var fechadesmontado = tmpl.find('.FechaEntregaEncomienda').value;
         var producto = tmpl.find('.ProductoEncomienda').value;
-        var hoy = moment();
-        var fecha1 = moment(fechamontado);
-        console.log(hoy);
-        console.log(fecha1)
-        console.log(hoy.isSameOrAfter(fecha1));
         if (NoVacio(cliente) &&
             NoVacio(peso) &&
             NoVacio(paisorigen) &&
@@ -39,7 +38,9 @@ Template.Crear_Encomienda.events({
             NoVacio(precio) &&
             NoVacio(fechamontado) &&
             NoVacio(fechadesmontado) &&
-            NoVacio(producto)) {
+            NoVacio(producto) &&
+            ValFecha(fechamontado) &&
+            ValFecha(fechadesmontado)) {
             var data = {
                 Cliente: cliente,
                 Peso: peso,
@@ -198,6 +199,7 @@ Template.Cliente_Encomienda.helpers({
 });
 Template.Distribuir_Encomienda.helpers({
     encomienda_list: function() {
-        return Encomienda.find({});
+        return Encomienda.find({ $or: [{ Cantidad: { $gt: 0 } }, { Peso: { $gt: 0 } }] });
+
     },
 });

@@ -18,11 +18,31 @@
         <button class="cerrar">Cerrar Página</button>
     </div>
 </template>
+<template name="Lista_Carga">
+    <div class="panel-body bg-white">
+        <h1><center>Cargas asignadas</center></h1>
+        <div id="table-mhs col-md-12">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th><center>Placa Tracto</center></th>
+                    <th><center>Placa Chata</center></th>
+                    <th><center>Peso Asignado</center></th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each carga_list}} {{>lista_carga}} {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <button class="cerrar">Cerrar Página</button>
+    </div>
+</template>
 <template name="lista_carga">
     <tr>
         <td>{{PlacaTracto}}</td>
         <td>{{PlacaChata}}</td>
-        <td>{{Peso}}</td>
+        <td>{{Peso}} {{Unidades}}</td>
     </tr>
 </template>
 

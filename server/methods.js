@@ -225,7 +225,7 @@ Meteor.methods({
         var adminUp = Tracto.update({ Placa: data.PlacaTracto }, {
             $set: {
                 Estado: data.Encomienda,
-                Habilidado: false
+                Habilitado: false
             }
         });
     },
@@ -233,7 +233,7 @@ Meteor.methods({
         var adminUp = Tracto.update({ Placa: placa }, {
             $set: {
                 Estado: "Libre",
-                Habilidado: true
+                Habilitado: true
             }
         });
     },
@@ -265,7 +265,8 @@ Meteor.methods({
             Marca: String,
             Borrar: Boolean,
             Habilitado: Boolean,
-            Estado: String
+            Estado: String,
+            Apellido: String
         });
         var adminId = Chata.insert(data);
     },
@@ -381,7 +382,7 @@ Meteor.methods({
             Alto: String,
             Largo: String,
             Ancho: String,
-            Cantidad: String,
+            Cantidad: Number,
             PaisOrigen: String,
             CuidadOrigen: String,
             PaisDestino: String,
@@ -495,7 +496,6 @@ Meteor.methods({
         var adminInsert = Carga.insert(data);
     },
     CargaMostrado: function(data) {
-        console.log(data);
         var admin = Carga.update(data._id, {
             $set: {
                 Mostrado: true
