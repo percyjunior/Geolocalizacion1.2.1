@@ -400,7 +400,7 @@ Template.reparto.events({
                                     dominio.Cargamento_info.Cantidad -= cantidad;
                                     debugger;
                                     console.log("Se asignan ", cantidad, " al camion ", camion.Placa.Tracto);
-                                    _.extend(asignacion, { PlacaTracto: camion.Placa.Tracto }, { PlacaChata: camion.Placa.Chata }, { Encomienda: id }, { Unidades: cantidad }, { Mostrado: false });
+                                    _.extend(asignacion, { PlacaTracto: camion.Placa.Tracto }, { PlacaChata: camion.Placa.Chata }, { Encomienda: id }, { Unidades: cantidad }, { Mostrado: false }, { Entregado: false });
                                     _.extend(reparto, {
                                         [cont]: asignacion
                                     });
@@ -418,7 +418,7 @@ Template.reparto.events({
                                 var peso = 28000 - camion.Peso;
                                 peso /= 1000;
                                 if (peso > dominio.Cargamento_info.Peso) {
-                                    _.extend(asignacion, { PlacaTracto: camion.Placa.Tracto }, { PlacaChata: camion.Placa.Chata }, { Encomienda: id }, { Peso: dominio.Cargamento_info.Peso }, { Mostrado: false });
+                                    _.extend(asignacion, { PlacaTracto: camion.Placa.Tracto }, { PlacaChata: camion.Placa.Chata }, { Encomienda: id }, { Peso: dominio.Cargamento_info.Peso }, { Mostrado: false }, { Entregado: false });
                                     _.extend(reparto, {
                                         [cont]: asignacion
                                     });
@@ -427,7 +427,7 @@ Template.reparto.events({
                                     console.log("Fin del reparto");
                                 } else {
                                     dominio.Cargamento_info.Peso -= peso;
-                                    _.extend(asignacion, { PlacaTracto: camion.Placa.Tracto }, { PlacaChata: camion.Placa.Chata }, { Encomienda: id }, { Peso: peso }, { Mostrado: false });
+                                    _.extend(asignacion, { PlacaTracto: camion.Placa.Tracto }, { PlacaChata: camion.Placa.Chata }, { Encomienda: id }, { Peso: peso }, { Mostrado: false }, { Entregado: false });
                                     _.extend(reparto, {
                                         [cont]: asignacion
                                     });
@@ -445,6 +445,7 @@ Template.reparto.events({
         }
         ///////////////////////////////////
         var reparto = PSR(variables, dominio, id, reparto);
+        //// Redireccionar a pagina de raparto de encomiendas
     }
 });
 

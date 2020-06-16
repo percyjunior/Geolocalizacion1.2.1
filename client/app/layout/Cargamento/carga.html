@@ -38,11 +38,59 @@
         <button class="cerrar">Cerrar Página</button>
     </div>
 </template>
+<template name="Lista_Carga_Dos">
+    <div class="panel-body bg-white">
+        <h1><center>Cargas asignadas</center></h1>
+        <div id="table-mhs col-md-12">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th><center>Placa Tracto</center></th>
+                    <th><center>Placa Chata</center></th>
+                    <th><center>Peso Asignado</center></th>
+                    <th><center>Acciones</center></th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each carga_list}} {{>lista_carga_Dos}} {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel-body bg-white">
+        <h1><center>Cargas Entregadas</center></h1>
+        <div id="table-mhs col-md-12">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th><center>Placa Tracto</center></th>
+                    <th><center>Placa Chata</center></th>
+                    <th><center>Peso Asignado</center></th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each carga_entregada_list}} {{>lista_carga}} {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>
 <template name="lista_carga">
     <tr>
-        <td>{{PlacaTracto}}</td>
-        <td>{{PlacaChata}}</td>
-        <td>{{Peso}} {{Unidades}}</td>
+        <td><center>{{PlacaTracto}}</center></td>
+        <td><center>{{PlacaChata}}</center></td>
+        <td><center>{{Peso}} {{Unidades}}</center></td>
+    </tr>
+</template>
+
+<template name="lista_carga_Dos">
+    <tr>
+        <td><center>{{PlacaTracto}}</center></td>
+        <td><center>{{PlacaChata}}</center></td>
+        <td><center>{{Peso}} {{Unidades}}</center></td>
+        <td align="center">
+            <a><button id="Entregado" class="Entregado">Entregado</button></a>
+        </td>
     </tr>
 </template>
 
@@ -65,11 +113,4 @@
         </div>
         <button class="cerrar">Cerrar Página</button>
     </div>
-</template>
-<template name="lista_carga">
-    <tr>
-        <td>{{PlacaTracto}}</td>
-        <td>{{PlacaChata}}</td>
-        <td>{{Peso}}</td>
-    </tr>
 </template>

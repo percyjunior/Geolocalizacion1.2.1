@@ -6,7 +6,7 @@ var ValFecha = function(value) {
     if (bool === false) {
         return true;
     }
-    Bert.alert("La Fecha ingresada es incorrecta", "danger", "growl-top-right");
+    Bert.alert("La Fecha ingresada es no es valida", "danger", "growl-top-right");
 }
 var NoVacio = function(value) {
     debugger;
@@ -199,7 +199,6 @@ Template.Cliente_Encomienda.helpers({
 });
 Template.Distribuir_Encomienda.helpers({
     encomienda_list: function() {
-        return Encomienda.find({ $or: [{ Cantidad: { $gt: 0 } }, { Peso: { $gt: 0 } }] });
-
+        return Encomienda.find({ $or: [{ Peso: { $gt: 0 } }, { Cantidad: { $gt: 0 } }] });
     },
 });

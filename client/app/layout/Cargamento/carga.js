@@ -1,3 +1,25 @@
+Template.Lista_Carga_Dos.events({
+    'click .Entregado': function(e, tmp) {
+        var id = this._id;
+        Meteor.call('EntregarEncomienda', id, function(error) {
+            if (error) {
+                return throwError(error.reason);
+            }
+        });
+        var tracto = this.PlacaTracto;
+        var chata = this.PlacaChata;
+        Meteor.call('DesocuparCamion', tracto, function(error) {
+            if (error) {
+                return throwError(error.reason);
+            }
+        });
+        Meteor.call('DesocuparChata', chata, function(error) {
+            if (error) {
+                return throwError(error.reason);
+            }
+        });
+    }
+});
 Template.Distribuir_Carga.events({
     'click .entregar': function(e, tmpl) {
         var tracto = this.PlacaTracto;
@@ -44,6 +66,14 @@ Template.Distribuir_Carga.helpers({
 Template.Lista_Carga.helpers({
     carga_list: function() {
         return Carga.find({});
+    }
+});
+Template.Lista_Carga_Dos.helpers({
+    carga_list: function() {
+        return Carga.find({ Entregado: false });
+    },
+    carga_entregada_list: function() {
+        return Carga.find({ Entregado: true });
     }
 });
 Template.Socio_Encomienda.helpers({
